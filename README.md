@@ -40,6 +40,8 @@ This collection provides examples for updating Concur expense report and expense
     
 6.How to update expense report entry fields
 
+For an understanding on how to use this repository, read the following blog post (to be linked)
+
 
 ## Requirements
 In order to use this repository you will need
