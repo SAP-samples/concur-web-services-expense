@@ -1,0 +1,461 @@
+{
+	"info": {
+		"_postman_id": "e786ebfa-61c0-49d4-b72a-4e709002aff4",
+		"name": "Updating Expense Reports and Entries",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29050970"
+	},
+	"item": [
+		{
+			"name": "1 - Retrieving header data for all expense reports",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{dataCenterURI}}/api/v3.0/expense/reports?user=ALL",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"api",
+						"v3.0",
+						"expense",
+						"reports"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "ALL"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2 - Retrieving expense report header data for a specific ReportID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{dataCenterURI}}/expensereports/v4/users/{{userID}}/context/{{contextType}}/reports/{{reportID}}",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"expensereports",
+						"v4",
+						"users",
+						"{{userID}}",
+						"context",
+						"{{contextType}}",
+						"reports",
+						"{{reportID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3 - Retrieving expense entries for a specific ReportID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{dataCenterURI}}/expensereports/v4/users/{{userID}}/context/{{contextType}}/reports/{{reportID}}/expenses",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"expensereports",
+						"v4",
+						"users",
+						"{{userID}}",
+						"context",
+						"{{contextType}}",
+						"reports",
+						"{{reportID}}",
+						"expenses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4 - Retrieving expense entry data for a specific Expense ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{dataCenterURI}}/expensereports/v4/users/{{userID}}/context/{{contextType}}/reports/{{reportID}}/expenses/{{expenseID}}",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"expensereports",
+						"v4",
+						"users",
+						"{{userID}}",
+						"context",
+						"{{contextType}}",
+						"reports",
+						"{{reportID}}",
+						"expenses",
+						"{{expenseID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5a - Retrieve Unique User ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"pm.collectionVariables.set(\"userID\", jsonData.Resources[0].id);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{dataCenterURI}}/profile/identity/v4/Users?filter=userName eq \"tricia.connolly@tconnolly.com\"",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"profile",
+						"identity",
+						"v4",
+						"Users"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "userName eq \"tricia.connolly@tconnolly.com\"",
+							"description": "Filter by login ID"
+						}
+					]
+				},
+				"description": "[SAP Concur Developer Center | Identity v4](https://developer.concur.com/api-reference/profile/v4.identity.html)\n\n**Scopes Required:**\n\n- identity.user.ids.read"
+			},
+			"response": []
+		},
+		{
+			"name": "5b - Update Header Text Field",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\r\n    \"businessPurpose\":\"Office Party Supplies\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{dataCenterURI}}/expensereports/v4/users/{{userID}}/context/TRAVELER/reports/{{reportID}}",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"expensereports",
+						"v4",
+						"users",
+						"{{userID}}",
+						"context",
+						"TRAVELER",
+						"reports",
+						"{{reportID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5c1- Retrieve List IDs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{dataCenterURI}}/list/v4/lists/",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"list",
+						"v4",
+						"lists",
+						""
+					]
+				},
+				"description": "[SAP Concur Developer Center | Identity v4](https://developer.concur.com/api-reference/profile/v4.identity.html)\n\n**Scopes Required:**\n\n- identity.user.ids.read"
+			},
+			"response": []
+		},
+		{
+			"name": "5c2- Retrieve List Item IDs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{dataCenterURI}}/list/v4/lists/{{listID}}/items",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"list",
+						"v4",
+						"lists",
+						"{{listID}}",
+						"items"
+					]
+				},
+				"description": "[SAP Concur Developer Center | Identity v4](https://developer.concur.com/api-reference/profile/v4.identity.html)\n\n**Scopes Required:**\n\n- identity.user.ids.read"
+			},
+			"response": []
+		},
+		{
+			"name": "5c2 Retrieve Children List Item IDs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{dataCenterURI}}/list/v4/lists/{{listID}}/items/{{itemID}}/children",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"list",
+						"v4",
+						"lists",
+						"{{listID}}",
+						"items",
+						"{{itemID}}",
+						"children"
+					]
+				},
+				"description": "[SAP Concur Developer Center | Identity v4](https://developer.concur.com/api-reference/profile/v4.identity.html)\n\n**Scopes Required:**\n\n- identity.user.ids.read"
+			},
+			"response": []
+		},
+		{
+			"name": "5c3- Update Header Connected List Field",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"customData\": [\r\n        {\r\n            \"id\": \"custom1\",\r\n             \"value\": \"6C989207562737408F8452F2B211286E\",\r\n            \"isValid\": true,\r\n            \"listItemUrl\": \"https://us2.api.concursolutions.com/list/v4/items?id=6C989207562737408F8452F2B211286E\"\r\n        },\r\n\r\n        {\r\n          \"id\": \"custom2\",\r\n            \"value\": \"31bca30926db884ebf1c1ec990540ae8\",\r\n            \"isValid\": true,\r\n            \"listItemUrl\": \"https://us2.api.concursolutions.com/list/v4/items?id=31bca30926db884ebf1c1ec990540ae8\"\r\n        }\r\n \r\n    ],\r\n     \r\n    \"expenseSource\":\"OTHER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{dataCenterURI}}/expensereports/v4/users/{{userID}}/context/TRAVELER/reports/{{reportID}}",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"expensereports",
+						"v4",
+						"users",
+						"{{userID}}",
+						"context",
+						"TRAVELER",
+						"reports",
+						"{{reportID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6 - Updating Expense Report Entry Fields",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t    \"expenseType\": {\r\n        \"id\": \"CARRT\",\r\n        \"name\": \"Car Rental\",\r\n        \"code\": \"OTHER\",\r\n        \"isDeleted\": false,\r\n        \"listItemId\": null\r\n    },\r\n    \"transactionAmount\": {\r\n        \"value\": 15.50000000,\r\n        \"currencyCode\": \"USD\" },\r\n\r\n    \"expenseSource\":\"OTHER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{dataCenterURI}}/expensereports/v4/users/{{userID}}/context/{{contextType}}/reports/{{reportID}}/expenses/{{expenseID}}",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"expensereports",
+						"v4",
+						"users",
+						"{{userID}}",
+						"context",
+						"{{contextType}}",
+						"reports",
+						"{{reportID}}",
+						"expenses",
+						"{{expenseID}}"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "tricia.connolly@tconnolly.com",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Expense Group Configurations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{dataCenterURI}}/api/v3.0/expense/expensegroupconfigurations",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"api",
+						"v3.0",
+						"expense",
+						"expensegroupconfigurations"
+					],
+					"query": [
+						{
+							"key": "createDateAfter",
+							"value": "2023-09-02",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{accessToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "userID",
+			"value": " The unique identifier of the SAP Concur user",
+			"type": "string"
+		},
+		{
+			"key": "contextType",
+			"value": "TRAVELER",
+			"type": "string"
+		},
+		{
+			"key": "reportID",
+			"value": "ID of the Report you want to Query",
+			"type": "string"
+		},
+		{
+			"key": "expenseID",
+			"value": "The ExpenseID for a specific expense report entry",
+			"type": "string"
+		},
+		{
+			"key": "itemID",
+			"value": "List item id needed to view list item children",
+			"type": "string"
+		},
+		{
+			"key": "listID",
+			"value": "List ID needed to view list item IDs",
+			"type": "string"
+		}
+	]
+}
