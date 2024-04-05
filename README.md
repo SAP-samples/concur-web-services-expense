@@ -40,7 +40,7 @@ This collection provides examples for updating Concur expense report and expense
     
 6.How to update expense report entry fields
 
-For an understanding on how to use this repository, read the following blog post (to be linked)
+For an understanding on how to use this repository, read the following [blog post]([to be linked](https://community.sap.com/t5/enterprise-resource-planning-blogs-by-sap/web-services-for-concur-expense-updating-expense-reports-and-entries/ba-p/13657690).
 
 
 ## Requirements
