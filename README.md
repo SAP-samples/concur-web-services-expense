@@ -53,10 +53,10 @@ In order to use this repository you will need
 ## Download and Installation
 
 ## Known Issues
-<!-- You may simply state "No known issues. -->
+No known issues.
 
 ## How to obtain support
-[Create an issue](https://github.com/SAP-samples/<repository-name>/issues) in this repository if you find a bug or have questions about the content.
+This project is provided "as-is", with no expected changes or support. The complete authentication documentation [can be found here](https://developer.concur.com/api-reference/expense/expense-report/v4.expenses.html).
  
 For additional support, [ask a question in SAP Community](https://answers.sap.com/questions/ask.html).
 
