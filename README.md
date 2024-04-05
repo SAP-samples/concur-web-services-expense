@@ -20,7 +20,17 @@ Please edit this file as it is the primary description file for your project. Yo
 -->
 
 ## Description
-<!-- Please include SEO-friendly description -->
+This collection provides examples for updating Concur expense report and expense entry data using Concur's Expense API offerings. The following scenarios are included:
+
+1.Retrieving header data for all expense reports
+2.Retrieving expense report header data for a specific ReportID
+3.Retrieving expense entries for a specific ReportID
+4.Retrieving expense entry data for a specific Expense ID
+5.Updating expense report header data
+    1.Retrieve Unique User ID
+    2.Update Header Text Field
+    3.Update Header Connect List Fields
+6.How to update expense report entry fields
 
 ## Requirements
 
