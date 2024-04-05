@@ -20,7 +20,7 @@ Please edit this file as it is the primary description file for your project. Yo
 -->
 
 ## Description
-This collection provides examples for updating Concur expense report and expense entry data using Concur's Expense API offerings. The following scenarios are included:
+This collection provides examples for updating Concur expense report and expense entry data using Concur's Expense API offerings. The following scenarios are included in the Updating Expense Reports and Entries.postman_collection.json:
 
 1.Retrieving header data for all expense reports
 
